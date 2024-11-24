@@ -1,29 +1,27 @@
-/* Стилі для поля пошуку */
-.searchInputWrapper {
+.searchBar {
     display: flex;
-    align-items: center;
-    margin-top: 20px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.searchInputField {
+.searchInput {
+    flex: 1;
     padding: 10px;
-    width: 100%;
-    max-width: 300px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #444;
+    font-size: 1rem;
 }
 
 .searchButton {
     padding: 10px 20px;
-    background-color: #ff5733;
+    background-color: #0070f3;
     color: #fff;
+    border: none;
     border-radius: 5px;
-    margin-left: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .searchButton:hover {
-    background-color: #ff3a00;
+    background-color: #005bb5;
 }

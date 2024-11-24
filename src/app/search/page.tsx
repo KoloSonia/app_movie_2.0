@@ -7,7 +7,7 @@ export default async function SearchPage({ searchParams }: { searchParams: { que
     return (
         <div className="container">
             <h1>Search Results for {searchParams.query}</h1>
-            <MoviesListComponent movies={results} />
+            <MoviesListComponent movies={results} genres={[]} />
         </div>
     );
 }

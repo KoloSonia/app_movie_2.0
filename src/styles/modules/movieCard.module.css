@@ -1,46 +1,41 @@
-/* Стилі для MovieCardComponent */
-.movieCard {
-    border: 1px solid #444;
+.movieDetailsContainer {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
     border-radius: 10px;
-    overflow: hidden;
-    background-color: #222222;
-    width: 100%;
-    position: relative;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.movieCard:hover {
-    transform: scale(1.05);
+.poster {
+    max-width: 300px;
+    border-radius: 10px;
 }
 
-.movieCard img {
-    width: 100%;
-    height: auto;
+.details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.movieCardContent {
-    padding: 15px;
+.tagline {
+    font-style: italic;
+    color: #888;
 }
 
-.movieCardContent h3 {
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.movieCardContent p {
-    font-size: 1rem;
-    color: #ddd;
+.overview {
     margin: 10px 0;
 }
 
 .genreBadge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #333;
+    display: inline-block;
+    background: #007bff;
+    color: #fff;
     padding: 5px 10px;
     border-radius: 20px;
-    font-size: 0.8rem;
-    color: #fff;
+    font-size: 12px;
+    margin: 2px;
 }

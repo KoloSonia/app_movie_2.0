@@ -7,7 +7,7 @@ export default async function GenrePage({ searchParams }: { searchParams: { genr
     return (
         <div className="container">
             <h1>Genre: {searchParams.genre}</h1>
-            <MoviesListComponent movies={results} />
+            <MoviesListComponent movies={results} genres={[]}/>
         </div>
     );
 }

@@ -1,0 +1,32 @@
+/* filter.module.css */
+.filterRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: #f9f9f9;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.filterItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filterLabel {
+    font-weight: bold;
+    color: #555;
+}
+
+.filterSelect {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+}

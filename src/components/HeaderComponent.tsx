@@ -1,28 +1,43 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import styles from '../styles/modules/header.module.css';
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import styles from "@/styles/modules/header.module.css";
 
-export default function HeaderComponent() {
-    const [query, setQuery] = useState('');
+const HeaderComponent: React.FC = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const router = useRouter();
+
+    const handleSearch = () => {
+        if (searchQuery.trim() !== "") {
+            router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+        }
+    };
+
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
+    };
 
     return (
         <header className={styles.header}>
-            <Link href="/" className={styles.logo}>
-                MoviesApp
-            </Link>
-            <div className={styles.search}>
+            <div className={styles.logo}>🎬 MovieApp</div>
+            <div className={styles.searchContainer}>
                 <input
                     type="text"
-                    placeholder="Search movies..."
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Пошук фільмів..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={handleKeyPress}
+                    className={styles.searchInput}
                 />
-                <Link href={`/search?query=${query}`}>
-                    <button>Search</button>
-                </Link>
+                <button onClick={handleSearch} className={styles.searchButton}>
+                    Пошук
+                </button>
             </div>
         </header>
     );
-}
+};
+
+export default HeaderComponent;

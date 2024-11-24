@@ -1,18 +1,22 @@
-import React from 'react';
-import styles from '../styles/modules/header.module.css';
-import { GenreModel } from '../models/genre.model';
+import React from "react";
+import { Genre } from "@/models/genre.model";
+import styles from "../styles/modules/filter.module.css";
 
 interface GenreDropdownProps {
-    genres: GenreModel[];
+    genres: Genre[];
     onFilterChange: (filterName: string, value: string) => void;
 }
 
 const GenreDropdownComponent: React.FC<GenreDropdownProps> = ({ genres, onFilterChange }) => {
     return (
-        <div>
+        <div className={styles.filterItem}>
+            <label htmlFor="genreFilter" className={styles.filterLabel}>
+                Жанр:
+            </label>
             <select
-                className={styles.genreDropdown}
-                onChange={(e) => onFilterChange('genreId', e.target.value)}
+                id="genreFilter"
+                className={styles.filterSelect}
+                onChange={(e) => onFilterChange("genreId", e.target.value)}
             >
                 <option value="">Всі жанри</option>
                 {genres.map((genre) => (
@@ -21,16 +25,6 @@ const GenreDropdownComponent: React.FC<GenreDropdownProps> = ({ genres, onFilter
                     </option>
                 ))}
             </select>
-            <input
-                type="number"
-                placeholder="Рік"
-                onChange={(e) => onFilterChange('year', e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="Рейтинг"
-                onChange={(e) => onFilterChange('rating', e.target.value)}
-            />
         </div>
     );
 };
