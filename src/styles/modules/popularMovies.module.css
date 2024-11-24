@@ -1,0 +1,25 @@
+/* Стилі для популярних фільмів */
+.popularMoviesWrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: scroll;
+    padding: 20px 0;
+}
+
+.popularMovieCard {
+    width: 200px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.popularMovieCard:hover {
+    transform: scale(1.1);
+}
+
+.popularMovieCard img {
+    width: 100%;
+    border-radius: 10px;
+}

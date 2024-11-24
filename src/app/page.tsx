@@ -1,95 +1,72 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import React, { useState, useEffect } from 'react';
+import MoviesListComponent from '@/components/MoviesListComponent';
+import GenreDropdownComponent from '@/components/GenreDropdownComponent';
+import PaginationComponent from '@/components/PaginationComponent';
+import { filterMovies, getGenres } from '../services/api.service.ts';
+import {MovieDetails} from "@/models/movie.model";
+import {GenreModel} from "@/models/genre.model"; // Виправлено назви імпортів
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+export default function HomePage() {
+    const [movies, setMovies] = useState<MovieDetails[]>([]);
+    const [genres, setGenres] = useState<GenreModel[]>([]);
+    const [filters, setFilters] = useState({
+        genreId: '',
+        year: '',
+        rating: '',
+    });
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
+    useEffect(() => {
+        const loadMovies = async () => {
+            const { results, total_pages } = await filterMovies(
+                filters.genreId, // Передаємо кожен фільтр
+                filters.year,
+                filters.rating,
+                currentPage
+            );
+            if (results && Array.isArray(results)) {
+                setMovies(results);
+                setTotalPages(total_pages);
+            } else {
+                setMovies([]); // Якщо results немає, відображаємо порожній масив
+                setTotalPages(1); // Якщо немає сторінок, встановлюємо 1
+            }
+        };
+
+        const loadGenres = async () => {
+            const fetchedGenres = await getGenres();
+            setGenres(fetchedGenres);
+        };
+
+        loadMovies();
+        loadGenres();
+    }, [currentPage, filters]);
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+    };
+
+    const handleFilterChange = (filterName: string, value: string) => {
+        setFilters({ ...filters, [filterName]: value });
+        setCurrentPage(1); // Повернутись до першої сторінки при зміні фільтрів
+    };
+
+    return (
+        <div>
+            <h1>Фільми</h1>
+            <GenreDropdownComponent
+                genres={genres}
+                onFilterChange={handleFilterChange}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+            <MoviesListComponent movies={movies} />
+            <PaginationComponent
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChangeAction={handlePageChange}
+            />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }

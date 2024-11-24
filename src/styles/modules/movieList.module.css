@@ -1,0 +1,39 @@
+/* Стилі для MoviesListComponent */
+.movieListContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.movieListSectionTitle {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.movieListContainer .movieCard {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.movieListContainer .movieCard:hover {
+    transform: scale(1.05);
+}
+.movieGenres {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.genreBadge {
+    background-color: #ff5733;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: #fff;
+}
