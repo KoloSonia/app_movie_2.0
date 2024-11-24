@@ -1,4 +1,4 @@
-import styles from '../styles/modules/movieCard.module.css';
+import styles from '../styles/modules/movieInfo.module.css';
 import {MovieDetails} from "@/models/movie.model";
 
 export default function PosterComponent({ movie }: { movie: MovieDetails }) {

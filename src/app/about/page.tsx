@@ -3,7 +3,7 @@ export default function AboutPage() {
         <div className="container">
             <h1>About This Project</h1>
             <p>
-                This is a learning project using data from{' '}
+                This is a learning project
                 <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">
                     The Movie Database (TMDB)
                 </a>

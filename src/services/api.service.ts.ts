@@ -14,8 +14,6 @@ export async function fetchMovieById(movieId: number): Promise<MovieDetails> {
     return response.json();
 }
 
-
-// Отримання жанрів
 export const getGenres = async (): Promise<Genre[]> => {
     const response = await fetch(`${API_BASE}/genre/movie/list?api_key=${API_KEY}`);
     const data = await response.json();

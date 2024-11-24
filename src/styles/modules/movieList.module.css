@@ -17,6 +17,7 @@
 .movieCard:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    color: #FFCC00FF;
 }
 
 .movieCard img {
@@ -33,14 +34,6 @@
     flex-direction: column;
     gap: 5px;
     z-index: 2;
-}
-
-.genreBadge {
-    background-color: rgba(0, 112, 243, 0.85);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
 }
 
 .movieCardContent {

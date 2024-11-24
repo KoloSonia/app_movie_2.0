@@ -3,42 +3,113 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background: #1c1c1c;
+    background-color: #111;
     color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #333;
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffd700;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: #f0c800;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav a {
+    font-size: 1.1rem;
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav a:hover {
+    color: #ffd700;
+    transform: translateY(-3px); /* Легкий підйом */
 }
 
 .searchContainer {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    border-radius: 50px;
+    padding: 8px 16px;
+    background-color: #222;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 .searchInput {
-    padding: 10px;
+    padding: 12px 18px;
+    font-size: 1rem;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     outline: none;
-    width: 300px;
-    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    width: 250px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchInput::placeholder {
+    color: #bbb;
+}
+
+.searchInput:focus {
+    background-color: #444;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
 }
 
 .searchButton {
     padding: 10px 20px;
+    background-color: #ffd700;
+    color: #111;
     border: none;
-    border-radius: 20px;
-    background: #007bff;
-    color: #fff;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .searchButton:hover {
-    background: #0056b3;
+    background-color: #ffcc00;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .searchContainer {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px 20px;
+    }
+
+    .searchInput {
+        width: 80%;
+    }
 }

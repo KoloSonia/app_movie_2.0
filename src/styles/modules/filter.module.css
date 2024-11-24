@@ -1,32 +1,80 @@
-/* filter.module.css */
 .filterRow {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
-    background: #f9f9f9;
-    padding: 10px 20px;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Світлий фон */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Легка тінь для сучасного вигляду */
 }
 
 .filterItem {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5px;
+    width: 250px;
 }
 
-.filterLabel {
+.filterItem label {
+    font-size: 1rem;
+    color: #333; /* Темний текст для контрасту */
+    margin-bottom: 5px;
     font-weight: bold;
-    color: #555;
 }
 
 .filterSelect {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    font-size: 14px;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd; /* Світла рамка */
+    background-color: #fff; /* Білий фон для селектів */
+    color: #333; /* Темний текст */
+    transition: all 0.3s ease;
+}
+
+.filterSelect:focus {
+    border-color: #ffd700; /* Жовта рамка при фокусі */
+    background-color: #fff; /* Залишаємо білий фон при фокусі */
+    outline: none;
+}
+
+.filterSelect option {
+    background-color: #fff; /* Білий фон для опцій */
+    color: #333; /* Темний текст для опцій */
+}
+
+.resetButton {
+    padding: 12px 20px;
+    background-color: #ffd700; /* Жовтий фон для кнопки */
+    color: #111; /* Темний текст на кнопці */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.resetButton:hover {
+    background-color: #ffcc00; /* Легкий відтінок жовтого при наведенні */
+    transform: translateY(-3px); /* Легка анімація підйому */
+}
+
+.resetButton:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Світиться контур при фокусі */
+}
+
+@media (max-width: 768px) {
+    .filterRow {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .filterItem {
+        width: 100%;
+        max-width: 220px;
+    }
 }

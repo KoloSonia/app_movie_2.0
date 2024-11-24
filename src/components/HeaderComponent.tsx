@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "@/styles/modules/header.module.css";
@@ -23,6 +24,10 @@ const HeaderComponent: React.FC = () => {
     return (
         <header className={styles.header}>
             <div className={styles.logo}>🎬 MovieApp</div>
+            <nav className={styles.nav}>
+                <Link href="/">Головна</Link>
+                <Link href="/about">Про нас</Link>
+            </nav>
             <div className={styles.searchContainer}>
                 <input
                     type="text"

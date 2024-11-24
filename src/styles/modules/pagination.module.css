@@ -1,36 +1,54 @@
 .pagination {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    padding: 10px 0;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Світлий фон */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Легка тінь для сучасного вигляду */
 }
 
 .paginationButton {
-    padding: 8px 15px;
-    border: 1px solid #0070f3;
-    background-color: #fff;
-    color: #0070f3;
+    padding: 10px 15px;
     font-size: 1rem;
-    border-radius: 5px;
+    color: #333; /* Темний текст */
+    background-color: #fff; /* Білий фон для кнопок */
+    border: 1px solid #ddd; /* Світла рамка */
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.paginationButton:hover {
-    background-color: #0070f3;
-    color: #fff;
-}
-
 .paginationButton:disabled {
-    background-color: #ccc;
-    color: #999;
     cursor: not-allowed;
+    background-color: #f1f1f1; /* Світло-сірий фон для неактивних кнопок */
+    border-color: #ccc; /* Світло-сіра рамка для неактивних кнопок */
+    color: #aaa; /* Світлий текст для неактивних кнопок */
 }
 
-.activeButton {
-    background-color: #0070f3;
-    color: #fff;
-    pointer-events: none;
+.paginationButton:hover:not(:disabled) {
+    background-color: #ffd700; /* Жовтий фон при наведенні */
+    border-color: #ffd700; /* Жовта рамка при наведенні */
+    transform: translateY(-2px); /* Легка анімація підйому */
+}
+
+.paginationButton.activeButton {
+    background-color: #ffd700; /* Жовтий фон для активної сторінки */
+    color: #111; /* Темний текст на активній кнопці */
+    border-color: #ffd700; /* Жовта рамка для активної сторінки */
+}
+
+@media (max-width: 768px) {
+    .pagination {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .paginationButton {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
 }
